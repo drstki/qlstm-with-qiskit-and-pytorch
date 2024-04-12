@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 4000 4000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1.72329,0,0,4.29908,-218.877,-10333.6)">
+        <rect x="549.329" y="2679.22" width="1109.84" height="379.357" style="fill:rgb(235,235,235);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-39.838,394.827)">
+        <g transform="matrix(1.38188,0,0,1.38188,-348.855,-2887.36)">
+            <text x="894.028px" y="2799.72px" style="font-family:'IBMPlexArabic-Bold', 'IBM Plex Arabic', sans-serif;font-weight:700;font-size:84.396px;">Ev<tspan x="989.901px " y="2799.72px ">a</tspan>lua<tspan x="1161.31px " y="2799.72px ">t</tspan>ion</text>
+        </g>
+        <g>
+            <g transform="matrix(0.669699,1.82868e-17,8.69764e-18,1.88514,129.95,-4479.58)">
+                <path d="M1995.27,3133.3L1782.38,3133.3" style="fill:none;stroke:black;stroke-width:5.89px;"/>
+            </g>
+            <g transform="matrix(1.89363,-0.132625,-0.122742,1.77155,-1916.55,-3858.61)">
+                <path d="M1991.67,3133.3L1980.27,3121.89" style="fill:none;stroke:black;stroke-width:4.88px;"/>
+            </g>
+            <g transform="matrix(1.74565,0.269581,0.249492,1.65424,-2788.14,-4292.12)">
+                <path d="M1991.67,3133.3L1978.18,3146.79" style="fill:none;stroke:black;stroke-width:4.25px;"/>
+            </g>
+            <g transform="matrix(0.669699,1.82868e-17,8.69764e-18,1.88514,833.49,-4480.48)">
+                <path d="M1995.27,3133.3L1782.38,3133.3" style="fill:none;stroke:black;stroke-width:5.89px;"/>
+            </g>
+            <g transform="matrix(1.89363,-0.132625,-0.122742,1.77155,-1213.01,-3859.51)">
+                <path d="M1991.67,3133.3L1980.27,3121.89" style="fill:none;stroke:black;stroke-width:4.88px;"/>
+            </g>
+            <g transform="matrix(1.74565,0.269581,0.249492,1.65424,-2084.6,-4293.02)">
+                <path d="M1991.67,3133.3L1978.18,3146.79" style="fill:none;stroke:black;stroke-width:4.25px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,646.897,-1188.78)">
+                <text x="375.111px" y="2643.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">Input</text>
+            </g>
+            <g transform="matrix(1,0,0,1,1833.51,-1187.22)">
+                <text x="375.111px" y="2643.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">Output</text>
+            </g>
+            <g transform="matrix(0.442453,0,0,0.840865,1254.74,-996.925)">
+                <rect x="549.329" y="2679.22" width="1109.84" height="379.357" style="fill:rgb(235,235,235);"/>
+                <path d="M1678,2679.22C1678,2673.74 1669.57,2669.31 1659.17,2669.31L549.329,2669.31C538.927,2669.31 530.494,2673.74 530.494,2679.22L530.494,3058.58C530.494,3064.05 538.927,3068.49 549.329,3068.49L1659.17,3068.49C1669.57,3068.49 1678,3064.05 1678,3058.58L1678,2679.22ZM1659.17,2679.22L549.329,2679.22L549.329,3058.58L1659.17,3058.58L1659.17,2679.22Z"/>
+            </g>
+            <g transform="matrix(1,0,0,1,1232.2,-1245.43)">
+                <text x="375.111px" y="2643.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">LS<tspan x="493.653px " y="2643.53px ">T</tspan>M</text>
+            </g>
+            <g transform="matrix(1,0,0,1,1168.02,-1131.22)">
+                <text x="375.111px" y="2643.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">(tr<tspan x="491.435px " y="2643.53px ">a</tspan>ined)</text>
+            </g>
+            <g transform="matrix(1,0,0,1,294.163,-1599.79)">
+                <text x="1945.61px" y="3125.17px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:50.096px;">calculat<tspan x="2122.6px " y="3125.17px ">e</tspan>d b<tspan x="2219.78px " y="3125.17px ">y</tspan></text>
+            </g>
+            <g transform="matrix(1,0,0,1,330.884,-1550.85)">
+                <text x="1945.61px" y="3125.17px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:50.096px;">the model</text>
+            </g>
+            <g transform="matrix(0.533945,0,0,0.698684,1167.94,-654.205)">
+                <text x="1969.01px" y="3171.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:138.206px;">(</text>
+            </g>
+            <g transform="matrix(-0.464618,0,0,0.698684,3472.4,-654.205)">
+                <text x="1969.01px" y="3171.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:138.206px;">(</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,516.571,-1462.23)">
+            <text x="375.111px" y="2643.53px" style="font-family:'IBMPlexArabic-Bold', 'IBM Plex Arabic', sans-serif;font-weight:700;font-size:110.89px;">1.</text>
+            <text x="502.191px" y="2643.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">Run the Model</text>
+        </g>
+        <g transform="matrix(1,0,0,1,890.906,1833.43)">
+            <text x="0px" y="0px" style="font-family:'IBMPlexArabic-Bold', 'IBM Plex Arabic', sans-serif;font-weight:700;font-size:110.89px;">2.</text>
+            <text x="127.08px" y="0px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">Calculat<tspan x="531.94px " y="0px ">e</tspan> Ev<tspan x="737.198px " y="0px ">a</tspan>luation Metrics</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-261.218,-166.86)">
+            <g transform="matrix(1,0,0,1,1759.58,2203.54)">
+                <text x="0px" y="0px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">(<tspan x="39.366px 95.033px 154.248px 192.395px 250.279px " y="0px 0px 0px 0px 0px ">Targe</tspan>t - Output)</text>
+            </g>
+            <g>
+                <g transform="matrix(0.634905,0,0,0.492765,616.996,1102.13)">
+                    <path d="M1757.43,2083.44L1665.6,2083.44L1752.73,2171.65L1666.58,2262.8L1757.43,2262.5" style="fill:none;stroke:black;stroke-width:11px;stroke-miterlimit:3;"/>
+                </g>
+                <g transform="matrix(1.415,0,0,1.415,-707.395,-934.72)">
+                    <text x="1678.56px" y="2250.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:26.076px;stroke:black;stroke-width:0.71px;stroke-linecap:butt;stroke-miterlimit:2;">i = 1</text>
+                </g>
+                <g transform="matrix(1.88752,0,0,1.88752,-1477.82,-2125.42)">
+                    <text x="1678.56px" y="2250.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:26.076px;stroke:black;stroke-width:0.53px;stroke-linecap:butt;stroke-miterlimit:2;">n</text>
+                </g>
+                <g transform="matrix(1.33541,0,0,1.33541,-501.805,-724.377)">
+                    <text x="1580.28px" y="2159.28px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:49.996px;stroke:black;stroke-width:0.75px;stroke-linecap:butt;stroke-miterlimit:2;">1</text>
+                </g>
+                <g transform="matrix(1.53092,0,0,1.33541,-813.86,-665.988)">
+                    <text x="1580.28px" y="2159.28px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:49.996px;stroke:black;stroke-width:0.7px;stroke-linecap:butt;stroke-miterlimit:2;">n</text>
+                </g>
+                <g transform="matrix(1.33541,0,0,1.33541,-504.075,-730.772)">
+                    <path d="M1580.29,2172.97L1611.86,2172.97" style="fill:none;stroke:black;stroke-width:4.68px;stroke-miterlimit:3;"/>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,1018.26,2044.99)">
+            <text x="0px" y="0px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">MSE:</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1018.26,2277.59)">
+            <text x="0px" y="0px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">MAE:</text>
+        </g>
+        <g transform="matrix(1.70673,0,0,1.70673,-2032.68,-1659.21)">
+            <text x="2545.46px" y="2122.52px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:35.118px;stroke:black;stroke-width:0.59px;stroke-linecap:butt;stroke-miterlimit:2;">2</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-259.219,-160.816)">
+            <g transform="matrix(1,0,0,1,1759.58,2430.75)">
+                <text x="0px" y="0px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:110.89px;">|T<tspan x="90.486px 149.702px 187.848px 245.733px " y="0px 0px 0px 0px ">arge</tspan>t - Output|</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-9.62798,1.04299)">
+                <g transform="matrix(0.634905,0,0,0.492765,634.068,1328.31)">
+                    <path d="M1757.43,2083.44L1665.6,2083.44L1752.73,2171.65L1666.58,2262.8L1757.43,2262.5" style="fill:none;stroke:black;stroke-width:11px;stroke-miterlimit:3;"/>
+                </g>
+                <g transform="matrix(1.415,0,0,1.415,-690.323,-708.544)">
+                    <text x="1678.56px" y="2250.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:26.076px;stroke:black;stroke-width:0.71px;stroke-linecap:butt;stroke-miterlimit:2;">i = 1</text>
+                </g>
+                <g transform="matrix(1.88752,0,0,1.88752,-1460.74,-1899.24)">
+                    <text x="1678.56px" y="2250.53px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:26.076px;stroke:black;stroke-width:0.53px;stroke-linecap:butt;stroke-miterlimit:2;">n</text>
+                </g>
+                <g transform="matrix(1.33541,0,0,1.33541,-484.733,-498.202)">
+                    <text x="1580.28px" y="2159.28px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:49.996px;stroke:black;stroke-width:0.75px;stroke-linecap:butt;stroke-miterlimit:2;">1</text>
+                </g>
+                <g transform="matrix(1.53092,0,0,1.33541,-796.788,-439.813)">
+                    <text x="1580.28px" y="2159.28px" style="font-family:'IBMPlexArabic', 'IBM Plex Arabic', sans-serif;font-size:49.996px;stroke:black;stroke-width:0.7px;stroke-linecap:butt;stroke-miterlimit:2;">n</text>
+                </g>
+                <g transform="matrix(1.33541,0,0,1.33541,-487.003,-504.597)">
+                    <path d="M1580.29,2172.97L1611.86,2172.97" style="fill:none;stroke:black;stroke-width:4.68px;stroke-miterlimit:3;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

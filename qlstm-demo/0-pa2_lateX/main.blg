@@ -1,0 +1,26 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is 'main.blg'
+[95] biber-darwin:340> INFO - === Mon Oct 16, 2023, 10:12:16
+[116] Biber.pm:418> INFO - Reading 'main.bcf'
+[269] Biber.pm:972> INFO - Found 56 citekeys in bib section 0
+[284] Biber.pm:4383> INFO - Processing section 0
+[300] Biber.pm:4574> INFO - Looking for bibtex file 'lib/pa_2.bib' for section 0
+[307] bibtex.pm:1713> INFO - LaTeX decoding ...
+[407] bibtex.pm:1518> INFO - Found BibTeX data source 'lib/pa_2.bib'
+[1146] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1146] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1146] Biber.pm:4203> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'de-DE'
+[1146] Biber.pm:4209> INFO - No sort tailoring available for locale 'de-DE'
+[1228] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1470] bbl.pm:757> INFO - Output to main.bbl
+[1470] Biber.pm:130> WARN - legacy month field 'oct' in entry 'Gers2000' is not an integer - this will probably not sort properly.
+[1470] Biber.pm:130> WARN - legacy month field 'Sep' in entry 'Mitarai2018' is not an integer - this will probably not sort properly.
+[1470] Biber.pm:130> WARN - legacy month field 'Feb' in entry 'Monaco2023' is not an integer - this will probably not sort properly.
+[1470] Biber.pm:130> WARN - legacy month field 'Mar' in entry 'Schuld2021' is not an integer - this will probably not sort properly.
+[1470] Biber.pm:130> WARN - legacy month field 'Sep' in entry 'LaRose2020' is not an integer - this will probably not sort properly.
+[1470] Biber.pm:130> WARN - I didn't find a database entry for 'https://scholar.google.com/' (section 0)
+[1471] Biber.pm:130> WARN - I didn't find a database entry for 'https://ieeexplore.ieee.org/' (section 0)
+[1471] Biber.pm:130> WARN - I didn't find a database entry for 'https://www.sciencedirect.com/' (section 0)
+[1471] Biber.pm:130> WARN - I didn't find a database entry for 'https://arxiv.org/' (section 0)
+[1471] Biber.pm:130> WARN - I didn't find a database entry for 'https://www.connectedpapers.com/' (section 0)
+[1471] Biber.pm:132> INFO - WARNINGS: 10
