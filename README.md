@@ -8,7 +8,7 @@ We are utilizing the integrated PyTorch workflow in Qiskit to build a hybrid qua
 
 The demonstrator will use the Aer statevector simulator for noise free QC simulations. We will also provide fake backends which can be used with different noise-models to simulate qLSTM in a more realistic environment and to learn to deal the noise in quantum devices. We plan to provide also different data sources which can be used for demonstration purposes.
 
-References:
-[1] Qiskit: https://github.com/Qiskit/qiskit
-[2] Hochreiter, Sepp, and Jürgen Schmidhuber. “Long Short-Term Memory.” Neural Computation 9, no. 8 (November 1, 1997): 1735–80. https://doi.org/10.1162/neco.1997.9.8.1735.
-[3] Chen, Samuel Yen-Chi, Shinjae Yoo, and Yao-Lung L. Fang. “Quantum Long Short-Term Memory.” In ICASSP 2022 - 2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 8622–26. Singapore, Singapore: IEEE, 2022. https://doi.org/10.1109/ICASSP43922.2022.9747369.
+References: <br>
+[1] Qiskit: https://github.com/Qiskit/qiskit <br>
+[2] Hochreiter, Sepp, and Jürgen Schmidhuber. “Long Short-Term Memory.” Neural Computation 9, no. 8 (November 1, 1997): 1735–80. https://doi.org/10.1162/neco.1997.9.8.1735. <br>
+[3] Chen, Samuel Yen-Chi, Shinjae Yoo, and Yao-Lung L. Fang. “Quantum Long Short-Term Memory.” In ICASSP 2022 - 2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 8622–26. Singapore, Singapore: IEEE, 2022. https://doi.org/10.1109/ICASSP43922.2022.9747369.<br>
