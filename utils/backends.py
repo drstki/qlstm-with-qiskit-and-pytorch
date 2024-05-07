@@ -1,6 +1,7 @@
 import numpy as np
 from qiskit.providers.fake_provider import GenericBackendV2
 from qiskit_ibm_runtime.fake_provider import FakeManilaV2, FakeSherbrooke
+from qiskit_aer import AerSimulator
 
 # creating fake devices from different QPU providers outside IBM/qiskit
 
@@ -24,3 +25,25 @@ def ibm_127q():
     ibm_127q_backend = FakeSherbrooke(  
     )
     return ibm_127q_backend
+
+# different Aer Simulator modules
+
+# A dense statevector simulation that can sample measurement outcomes from ideal circuits with all measurements at end of the circuit. For noisy simulations each shot samples a randomly sampled noisy circuit from the noise model.
+def aer_sv():
+    aer_sv_sim = AerSimulator(
+        method='statevector'
+    )
+    return aer_sv_sim
+# A dense density matrix simulation that may sample measurement outcomes from noisy circuits with all measurements at end of the circuit.
+def aer_dm():
+    aer_dm_sim = AerSimulator(
+        method='density_matrix'
+    )
+    return aer_dm_sim 
+
+# A tensor-network statevector simulator that uses a Matrix Product State (MPS) representation for the state. This can be done either with or without truncation of the MPS bond dimensions depending on the simulator options. The default behaviour is no truncation.
+def aer_mps():
+    aer_mps_sim = AerSimulator(
+        method='matrix_product_state'
+    )
+    return aer_mps_sim 
