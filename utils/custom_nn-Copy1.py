@@ -80,6 +80,7 @@ class QuantumLongShortTermMemory(nn.Module):
     def __init__(self, feature_map, ansatz, reps, input_size: int=4, hidden_size: int=1):
         super().__init__()
         num_qubits = int
+        reps = int
 
         self.input_sz = input_size
         self.hidden_sz = hidden_size

@@ -4,11 +4,12 @@ import math
 from qiskit import QuantumCircuit
 from qiskit_machine_learning.connectors import TorchConnector
 from qiskit_machine_learning.neural_networks import EstimatorQNN
+from qiskit.primitives import Estimator
 
 
 class LongShortTermMemory(nn.Module):
     """"""
-    def __init__(self, input_size: int=1, hidden_size: int=4):
+    def __init__(self, vqc, input_size: int=1, hidden_size: int=4):
         """ Initializes custom build LSTM model.
         Parameters:
             input_size (int): The dimensionality of the input for the LSTM (input feature).
@@ -74,41 +75,43 @@ class LongShortTermMemory(nn.Module):
  
 
 class QuantumLongShortTermMemory(nn.Module):
-    def __init__(self, feature_map, ansatz, reps, input_size: int=4, hidden_size: int=1):
+    def __init__(self, vqc, feature_map, ansatz, input_size: int=4, hidden_size: int=1):
         super().__init__()
-        num_qbits = 4
 
         self.input_sz = input_size
         self.hidden_sz = hidden_size
 
         # construct quantum layer
         self.qnn_layer = nn.ModuleDict()
-        self.construct_VQC_layer(num_qbits, feature_map, ansatz, reps)
+        self.construct_VQC_layer(vqc, feature_map, ansatz)
 
         # classical layer
         self.input_layer = nn.Linear(self.input_sz + self.hidden_sz, self.input_sz)
         self.input_layer_2 = nn.Linear(1, self.input_sz)
 
 
-    def construct_VQC_layer(self, qbits, feature_map, ansatz, reps):
+    def construct_VQC_layer(self, vqc, feature_map, ansatz):
         # construct the 4 QNN layer
+        #num_qbits = int
         for layer_name in ["1", "2", "3", "4", "5"]:
             # construct the quantum circuit
-            qc = QuantumCircuit(qbits)
+            #vqc = QuantumCircuit(num_qbits)
             # append the feature map and ansatz (with reps) to the circuit
-            qc.append(feature_map, range(qbits))
-            for _ in range(reps):
-                qc.append(ansatz, range(qbits))
+            #c.append(feature_map, range(num_qbits))
+            #for _ in range(reps):
+                #qc.append(ansatz, range(num_qbits))
 
             # initialize the QNN layer
-            vqc = EstimatorQNN(
-                    circuit=qc,
+            estimator = Estimator()
+            qnn = EstimatorQNN(
+                    circuit=vqc,
                     input_params=feature_map.parameters,
                     weight_params=ansatz.parameters,
-                    input_gradients=True
+                    input_gradients=True,
+                    estimator=estimator  
             )
 
-            self.qnn_layer[layer_name] = TorchConnector(vqc)
+            self.qnn_layer[layer_name] = TorchConnector(qnn)
 
 
     def forward(self, X: torch.Tensor, memory_states: tuple = None):
