@@ -4,7 +4,6 @@ import math
 from qiskit import QuantumCircuit
 from qiskit_machine_learning.connectors import TorchConnector
 from qiskit_machine_learning.neural_networks import EstimatorQNN
-from qiskit.primitives import Estimator
 
 
 class LongShortTermMemory(nn.Module):
@@ -102,13 +101,11 @@ class QuantumLongShortTermMemory(nn.Module):
                 qc.append(ansatz, range(qbits))
 
             # initialize the QNN layer
-            estimator = Estimator()
             vqc = EstimatorQNN(
                     circuit=qc,
                     input_params=feature_map.parameters,
                     weight_params=ansatz.parameters,
-                    input_gradients=True,
-                    estimator=estimator
+                    input_gradients=True
             )
 
             self.qnn_layer[layer_name] = TorchConnector(vqc)
