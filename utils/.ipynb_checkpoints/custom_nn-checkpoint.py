@@ -9,7 +9,8 @@ from qiskit.primitives import Estimator
 
 class LongShortTermMemory(nn.Module):
     """"""
-    def __init__(self, vqc, input_size: int=1, hidden_size: int=4):
+    
+    def __init__(self, vqc, num_qubits: int, input_size: int, hidden_size: int):
         """ Initializes custom build LSTM model.
         Parameters:
             input_size (int): The dimensionality of the input for the LSTM (input feature).
@@ -21,10 +22,10 @@ class LongShortTermMemory(nn.Module):
         self.hidden_sz = hidden_size
 
         # weight matrix W - input gate
-        self.W = nn.Parameter(torch.Tensor(input_size, hidden_size * 4))
+        self.W = nn.Parameter(torch.Tensor(input_size, hidden_size * num_qubits))
         # weight matrix U - forget gate
-        self.U = nn.Parameter(torch.Tensor(hidden_size, hidden_size * 4))
-        self.bias = nn.Parameter(torch.Tensor(hidden_size * 4))
+        self.U = nn.Parameter(torch.Tensor(hidden_size, hidden_size * num_qubits))
+        self.bias = nn.Parameter(torch.Tensor(hidden_size * num_qubits))
         # call the init weights function
         self.init_weights()
 
@@ -75,7 +76,7 @@ class LongShortTermMemory(nn.Module):
  
 
 class QuantumLongShortTermMemory(nn.Module):
-    def __init__(self, vqc, feature_map, ansatz, input_size: int=4, hidden_size: int=1):
+    def __init__(self, vqc, feature_map, ansatz, input_size: int, hidden_size: int):
         super().__init__()
 
         self.input_sz = input_size

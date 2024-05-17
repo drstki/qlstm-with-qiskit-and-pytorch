@@ -106,7 +106,7 @@ class QuantumLongShortTermMemory(nn.Module):
                 qc.compose(ansatz)
 
             # initialize the QNN layer
-            estimator = Estimator()
+            estimator = Estimator(bbackend=backend, options=options)
             vqc = EstimatorQNN(
                     circuit=qc,
                     input_params=feature_map.parameters,

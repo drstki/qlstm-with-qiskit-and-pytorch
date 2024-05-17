@@ -9,7 +9,8 @@ from qiskit.primitives import Estimator
 
 class LongShortTermMemory(nn.Module):
     """"""
-    def __init__(self, vqc, input_size: int=1, hidden_size: int=4):
+    
+    def __init__(self, vqc, num_qubits: int, input_size: int=1, hidden_size: int=4):
         """ Initializes custom build LSTM model.
         Parameters:
             input_size (int): The dimensionality of the input for the LSTM (input feature).
@@ -75,7 +76,8 @@ class LongShortTermMemory(nn.Module):
  
 
 class QuantumLongShortTermMemory(nn.Module):
-    def __init__(self, vqc, feature_map, ansatz, input_size: int=4, hidden_size: int=1):
+    
+    def __init__(self, vqc, feature_map, ansatz, input_size: int, hidden_size: int):
         super().__init__()
 
         self.input_sz = input_size
