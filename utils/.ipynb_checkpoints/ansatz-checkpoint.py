@@ -69,6 +69,7 @@ class VariationalLayer_2(QuantumCircuit):
         gamma = ParameterVector('γ', length=num_qubits)
 
         # entanglement
+
         self.cx(0,1)
         self.cx(1,2)
         self.cx(2,3)
@@ -102,6 +103,7 @@ class VariationalLayer_4(QuantumCircuit):
             self.rx(alpha[i], i)
             self.rz(beta[i], i)
 
+
         self.cx(3,2)
         self.cx(3,1)
         self.cx(3,0)
@@ -119,3 +121,27 @@ class VariationalLayer_4(QuantumCircuit):
         for i in range(num_qubits):
             self.rx(gamma[i], i)
             self.rz(delta[i], i)
+
+class VariationalLayer_5(QuantumCircuit):
+    """
+    own vl
+    """
+    def __init__(self, num_qubits: int, name="variational-layer"):
+        super().__init__(num_qubits, name=name)
+        # weight parameters
+        alpha = ParameterVector('α', length=num_qubits)
+        beta = ParameterVector('β', length=num_qubits)
+        gamma = ParameterVector('γ', length=num_qubits)
+        delta = ParameterVector('δ', length=num_qubits)
+
+        for i in range(num_qubits):
+            self.rx(alpha[i], i)
+            self.rz(beta[i], i)
+
+        for i in range(1, num_qubits):
+            self.cx(num_qubits - i, num_qubits - i - 1)
+
+        for i in range(num_qubits):
+            self.rx(gamma[i], i)
+            self.rz(delta[i], i)
+    
