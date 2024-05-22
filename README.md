@@ -1,4 +1,4 @@
-# PROJECT: qlstm-with-qiskit-and-pytorch
+# PROJECT: qlstm-with-qiskit-and-pytorch <br>
 
 We - Jonas Michel, Felix Lehner & Stefan Kister - build a quantum quantum Long Short-Term Memory (qLSTM) demonstrator with the quantum development framework Qiskit V1.x [1]. 
 
@@ -8,15 +8,16 @@ We are utilizing the integrated PyTorch workflow in Qiskit to build a hybrid qua
 
 The demonstrator will use the Aer statevector simulator for noise free QC simulations. We will also provide fake backends which can be used with different noise-models to simulate qLSTM in a more realistic environment and to learn to deal the noise in quantum devices. We plan to provide also different data sources which can be used for demonstration purposes.
 
-## TITLE: Predicting future Warming Stripes with a Quantum Long Term Short Memory (qLSTM) Model
+## TITLE: <br>
+Predicting future Warming Stripes with a Quantum Long Term Short Memory (qLSTM) Model
 
-## AUTHORS:
+## AUTHORS:<br>
 
 Felix Lehner ..., <br>
 Jonas Michel... , <br>
 Dr. Stefan Kister ...<br>
 
-## ABSTRACT:
+## ABSTRACT:<br>
 
 For this qLSTM demonstrator we use public data from a MetOffice database [4] which is used to create the warming stripes [5] provided by Ed Hawkins from University of Reading [6]. 
 
