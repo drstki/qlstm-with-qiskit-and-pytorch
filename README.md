@@ -19,7 +19,7 @@ Dr. Stefan Kister ...<br>
 
 ## ABSTRACT:<br>
 
-For this qLSTM demonstrator we use public data from a MetOffice database [4] which is used to create the warming stripes [5] provided by Ed Hawkins from University of Reading [6]. 
+For this [qLSTM demonstrator](https://github.com/drstki/qlstm-with-qiskit-and-pytorch/blob/main/qlstm_GlobalWarming_demonstrator.ipynb) we use public data from a MetOffice database [4] which is used to create the warming stripes [5] provided by Ed Hawkins from University of Reading [6]. 
 
 The data shows the global temperature for every year since 1850, so that data source is small which we assume might be an advantage for a quantum approach. It is scaled relatively to the average of the temperature of 1971-2018 to get a data range between -1 and 1 which is then represented in a color scheme in the stripes diagram.
 
