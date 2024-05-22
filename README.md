@@ -41,8 +41,9 @@ References: <br>
 [5] #ShowYourStripes Website: https://showyourstripes.info/
 [6] Link to PROFESSOR ED HAWKINS: https://research.reading.ac.uk/meteorology/people/ed-hawkins/
 
-Other Climate Data Sources:
-[x1] Link to NASA data base: https://data.giss.nasa.gov/gistemp/graphs_v4/) 
-[x2] Lenssen, Nathan J. L., Gavin A. Schmidt, James E. Hansen, Matthew J. Menne, Avraham Persin, Reto Ruedy, and Daniel Zyss. “Improvements in the GISTEMP Uncertainty Model.” Journal of Geophysical Research: Atmospheres 124, no. 12 (June 27, 2019): 6307–26. https://doi.org/10.1029/2018JD029522.
+Other Climate Data Sources:<br>
+[x1] Link to NASA data base: https://data.giss.nasa.gov/gistemp/graphs_v4/) <br>
+[x2] Lenssen, Nathan J. L., Gavin A. Schmidt, James E. Hansen, Matthew J. Menne, Avraham Persin, Reto Ruedy, and Daniel Zyss. “Improvements in the GISTEMP Uncertainty Model.” Journal of Geophysical Research: Atmospheres 124, no. 12 (June 27, 2019): 6307–26. https://doi.org/10.1029/2018JD029522.<br>
+<br><br>
 
 
