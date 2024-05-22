@@ -9,7 +9,7 @@ We are utilizing the integrated PyTorch workflow in Qiskit to build a hybrid qua
 The demonstrator will use the Aer statevector simulator for noise free QC simulations. We will also provide fake backends which can be used with different noise-models to simulate qLSTM in a more realistic environment and to learn to deal the noise in quantum devices. We plan to provide also different data sources which can be used for demonstration purposes.
 
 ## TITLE: <br>
-Predicting future Warming Stripes with a Quantum Long Term Short Memory (qLSTM) Model
+### Predicting future Warming Stripes with a Quantum Long Term Short Memory (qLSTM) Model <br>
 
 ## AUTHORS:<br>
 
