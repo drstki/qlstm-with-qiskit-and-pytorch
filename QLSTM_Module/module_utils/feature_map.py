@@ -72,3 +72,27 @@ class FeatureMap_4(QuantumCircuit):
             self.h(i)
             self.ry(x_input[i]*math.pi, i)
             self.rz((x_input[i]*x_input[i])*math.pi, i)
+
+
+### dictionary of all available feature map layers
+ALL_FEATURE_MAP_DICT = {
+    "fm_1": FeatureMap_1,
+    "fm_2": FeatureMap_2,
+    "fm_3": FeatureMap_3,
+    "fm_4": FeatureMap_4
+}
+
+def get_feature_map(feature_map, num_qubits: int) -> QuantumCircuit:
+    """
+    Returns a quantum circuit implementing the specified ansatz.
+
+    Keyword arguments:
+    feature_map - name of the feature map to be returned
+    num_qubits - number of qubits of the returned quantum circuit
+    """
+    if isinstance(feature_map, QuantumCircuit):
+        return feature_map
+    elif not feature_map in ALL_FEATURE_MAP_DICT.keys():
+        raise ValueError("Ansatz not available please choose:" + "".join(f" \'{key}\';" for key in ALL_FEATURE_MAP_DICT.keys()) + "\nAlternatively input custom feature map as Qiskit QuantumCircuit object.")
+    else:
+        return ALL_FEATURE_MAP_DICT[feature_map](num_qubits)
