@@ -14,12 +14,12 @@ from qiskit_machine_learning.connectors import TorchConnector
 
 
 
-
 class QuantumLongShortTermMemory(nn.Module):
     def __init__(self, feature_map="fm_1", ansatz="ghz", ansatz_reps=2, backend="aer_sv", noise_model=False, input_size=4, hidden_size: int=1):
         super().__init__()
         
         self.hidden_sz = hidden_size
+        self.input_sz = input_size
 
         # load predefined quantum hyperparameters
         self.backend =be.get_backend(backend)
@@ -34,16 +34,16 @@ class QuantumLongShortTermMemory(nn.Module):
 
         # construct quantum layer
         self.VQC = nn.ModuleDict()
-        self.construct_VQC_layer(feature_map, ansatz, ansatz_reps)
+        self.construct_VQC_layer(ansatz_reps)
 
         # classical layer
-        self.input_layer = nn.Linear(input_size + hidden_size, input_size)
-        self.input_layer_2 = nn.Linear(1, input_size)
+        self.input_layer = nn.Linear(self.input_sz + self.hidden_sz, self.input_sz)
+        self.input_layer_2 = nn.Linear(1, self.input_sz)
 
 
-    def construct_VQC_layer(self, feature_map, ansatz, ansatz_reps):        
+    def construct_VQC_layer(self, ansatz_reps):        
         # construct the VQC
-        vqc = self.feature_map.compose(self.ansatz, inplace=False)
+        self.vqc = self.feature_map.compose(self.ansatz, inplace=False)
         # TODO: add ansatz repetitions
 
         # construct the QNN layer
@@ -52,7 +52,7 @@ class QuantumLongShortTermMemory(nn.Module):
             obsv = SparsePauliOp(["Z"*self.feature_map.num_qubits]) 
             estimator = Estimator(backend=self.backend, options={'NoiseModel': self.noise_model})
             qnn = EstimatorQNN(
-                    circuit=vqc,
+                    circuit=self.vqc,
                     estimator=estimator,
                     observables=obsv,
                     input_params=self.feature_map.parameters,
@@ -88,3 +88,13 @@ class QuantumLongShortTermMemory(nn.Module):
         outputs = outputs.transpose(0, 1).contiguous()
 
         return outputs, (h_t, c_t)
+    
+    def get_model_info(self):
+        return {
+            "feature_map": self.feature_map,
+            "ansatz": self.ansatz,
+            "vqc": self.vqc,
+            "backend": self.backend,
+            "noise_model": self.noise_model,
+            "hidden_size": self.hidden_sz
+        }
