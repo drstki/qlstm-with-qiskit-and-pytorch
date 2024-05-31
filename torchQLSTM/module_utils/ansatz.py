@@ -4,11 +4,10 @@ from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.circuit import ParameterVector
 import math
 
-# test 
 
+# test 
 class ghz_circuit(QuantumCircuit):
-    
-    def __init__(self, num_qubits: int, name ="ghz circuit"):
+    def __init__(self, num_qubits: int, name ="ghz-circuit"):
         super().__init__(num_qubits)
         """Returns a quantum circuit implementing the GHZ state.
 
@@ -22,9 +21,7 @@ class ghz_circuit(QuantumCircuit):
         self.measure_all()
         
 
-
 # Paper 1
-
 class VariationalLayer_1(QuantumCircuit):
     """
     paper_1 - Chen2022 bibtex
@@ -55,7 +52,6 @@ class VariationalLayer_1(QuantumCircuit):
             self.rz(gamma[i], i)
 
 # Paper 2
-
 class VariationalLayer_2(QuantumCircuit):
     """
     paper_2 - Yu2023 bibtex
@@ -85,8 +81,6 @@ class VariationalLayer_2(QuantumCircuit):
 
 
 # paper_4 - Sim2019 circuit 14
-
-
 class VariationalLayer_4(QuantumCircuit):
     """
     paper_4 circuit 14 - Sim2019 bibtex
@@ -144,4 +138,28 @@ class VariationalLayer_5(QuantumCircuit):
         for i in range(num_qubits):
             self.rx(gamma[i], i)
             self.rz(delta[i], i)
-    
+
+
+### dictionary of all available ansatz layers
+ALL_ANSATZ_DICT = {
+    "ghz": ghz_circuit,
+    "vl-1": VariationalLayer_1,
+    "vl-2": VariationalLayer_2,
+    "vl-4": VariationalLayer_4,
+    "vl-5": VariationalLayer_5
+}
+
+def get_ansatz(ansatz, num_qubits: int) -> QuantumCircuit:
+    """
+    Returns a quantum circuit implementing the specified ansatz.
+
+    Keyword arguments:
+    ansatz_name - name of the ansatz to be returned
+    num_qubits - number of qubits of the returned quantum circuit
+    """
+    if isinstance(ansatz, QuantumCircuit):
+        return ansatz
+    elif not ansatz in ALL_ANSATZ_DICT.keys():
+        raise ValueError("Ansatz not available please choose:" + "".join(f" \'{key}\';" for key in ALL_ANSATZ_DICT.keys()) + "\nAlternatively input custom ansatz as Qiskit QuantumCircuit object.")
+    else:
+        return ALL_ANSATZ_DICT[ansatz](num_qubits)

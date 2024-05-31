@@ -3,6 +3,7 @@ from qiskit.providers.fake_provider import GenericBackendV2
 from qiskit_ibm_runtime.fake_provider import FakeManilaV2, FakeSherbrooke
 from qiskit_aer import AerSimulator
 
+## BACKEND INITIALIZATION
 # creating fake devices from different QPU providers outside IBM/qiskit
 
 # Quantware Contralto - 21+4 qubits: https://www.quantware.com/product/contralto
@@ -47,3 +48,21 @@ def aer_mps():
         method='matrix_product_state'
     )
     return aer_mps_sim 
+
+
+### BACKEND SELECTION
+ALL_BACKENDS = {
+    "qw_contralto": qw_contralto,
+    "ibm_5q": ibm_5q,
+    "ibm_127q": ibm_127q,
+    "aer_sv": aer_sv,
+    "aer_dm": aer_dm,
+    "aer_mps": aer_mps
+}
+
+# select backend
+def get_backend(backend):
+    if backend in ALL_BACKENDS.keys():
+        return ALL_BACKENDS[backend]()
+    else:
+        return backend

@@ -78,3 +78,19 @@ def th_noise_model(num_qubits, T1s, T2s, time_u1, time_u2, time_u3, time_cx, tim
         th_noise_model.add_quantum_error(errors_cx[j][k], "cx", [j, k])
 
     return th_noise_model
+
+
+
+### BACKEND SELECTION
+ALL_NOISE_MODELS = {
+    'qe': qe_noise_model,
+    'ro': ro_noise_model,
+    'th': th_noise_model
+}
+
+# select backend
+def get_noise_model(noise_model):
+    if noise_model in ALL_NOISE_MODELS.keys():
+        return ALL_NOISE_MODELS[noise_model]
+    else:
+        return noise_model
