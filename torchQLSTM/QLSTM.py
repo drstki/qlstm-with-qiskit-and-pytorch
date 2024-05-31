@@ -2,10 +2,10 @@ import torch
 import torch.nn as nn
 
 #import module_utils
-import module_utils.ansatz as astz
-import module_utils.feature_map as fm
-import module_utils.backends as be
-import module_utils.noise_models as nm
+import torchQLSTM.module_utils.ansatz as astz
+import torchQLSTM.module_utils.feature_map as fm
+import torchQLSTM.module_utils.backends as be
+import torchQLSTM.module_utils.noise_models as nm
 
 from qiskit.primitives import BackendEstimator as Estimator
 from qiskit.quantum_info import SparsePauliOp
