@@ -109,3 +109,27 @@ def shift_train_test_predict(data: pd.DataFrame, train_predict, test_predict,  t
     test_predict_plot[time_sequence + len(train_predict) -1 : - 1, :] = test_predict
 
     return train_predict_plot, test_predict_plot
+
+def time_window(input_data, window):
+    window_data = []
+    L = len(input_data)
+    for i in range(L-window):
+        train_series = input_data[i:i+window]
+        train_label = input_data[i+window:i+window+1,0]
+        # train_label = input_data[i+1:i+window+1,0]
+        window_data.append((train_series ,train_label))
+    return window_data
+
+def time_window_batch(input_data, window, batch_size):
+    window_data = []
+    L = len(input_data)
+    for i in range(0, L - window, batch_size):
+        train_series_batch = []
+        train_label_batch = []
+        for j in range(batch_size):
+            train_series = input_data[i+j:i+j+window]
+            train_label = input_data[i+j+window:i+j+window+1, 0]
+            train_series_batch.append(train_series)
+            train_label_batch.append(train_label)
+        window_data.append((np.array(train_series_batch), np.array(train_label_batch)))
+    return window_data
