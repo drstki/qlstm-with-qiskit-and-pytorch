@@ -2,10 +2,10 @@ import torch
 import torch.nn as nn
 
 #import module_utils
-import torchQLSTM.module_utils.ansatz as astz
-import torchQLSTM.module_utils.feature_map as fm
-import torchQLSTM.module_utils.backends as be
-import torchQLSTM.module_utils.noise_models as nm
+import generators.ansatz as astz
+import generators.feature_map as fm
+import generators.backends as be
+import generators.noise_models as nm
 
 from qiskit.primitives import BackendEstimator as Estimator
 from qiskit.quantum_info import SparsePauliOp
@@ -15,19 +15,18 @@ from qiskit_machine_learning.connectors import TorchConnector
 
 
 class QuantumLongShortTermMemory(nn.Module):
-    
-    def __init__(self, feature_map="fm_1", ansatz="ghz", ansatz_reps=2, backend="aer_sv", noise_model=False, input_size=4, hidden_size: int=1):
+
+    def __init__(self, feature_map, ansatz, ansatz_reps, backend, noise_model, input_size, hidden_size, num_qubits):
         super().__init__()
         
+        self.feature_map = feature_map
+        self.ansatz = ansatz
+        self.ansatz_reps = ansatz_reps
+        self.backend =backend
+        self.noise_model = noise_model
         self.hidden_sz = hidden_size
         self.input_sz = input_size
-
-        # load predefined quantum hyperparameters
-        self.backend =be.get_backend(backend)
-        self.noise_model = nm.get_noise_model(noise_model)
-        self.feature_map = fm.get_feature_map(feature_map, input_size)
-        self.ansatz = astz.get_ansatz(ansatz, input_size)
-        self.ansatz_reps = ansatz_reps
+        self.num_qubits = num_qubits
 
         # check feature map and ansatz compatibility
         if self.feature_map.num_qubits != self.ansatz.num_qubits:
@@ -42,24 +41,27 @@ class QuantumLongShortTermMemory(nn.Module):
         self.input_layer_2 = nn.Linear(1, self.input_sz)
 
 
-    def construct_VQC_layer(self, ansatz_reps):        
-        # construct the VQC
-        self.vqc = self.feature_map.compose(self.ansatz, inplace=False)
-        # TODO: add ansatz repetitions
+    def construct_VQC_layer(feature_map, ansatz, ansatz_reps, backend, noise_model):        
+       
+        for i in range(ansatz_reps):
+            ansatz_full = ansatz.compose(ansatz)
+        
+        vqc = feature_map.compose(ansatz_full)
 
         # construct the QNN layer
         for layer_name in ["1", "2", "3", "4", "5"]:
             # initialize the QNN layer
-            obsv = SparsePauliOp(["Z"*self.feature_map.num_qubits]) 
-            estimator = Estimator(backend=self.backend, options={'NoiseModel': self.noise_model})
+            obsv = SparsePauliOp(["Z"*feature_map.num_qubits]) 
+            estimator = Estimator(backend=backend, options={'NoiseModel': noise_model})
             qnn = EstimatorQNN(
-                    circuit=self.vqc,
+                    circuit=vqc,
                     estimator=estimator,
                     observables=obsv,
-                    input_params=self.feature_map.parameters,
-                    weight_params=self.ansatz.parameters,
+                    input_params=feature_map.parameters,
+                    weight_params=ansatz.parameters,
                     input_gradients=True
             )
+            
             self.VQC[layer_name] = TorchConnector(qnn)
 
 
@@ -99,3 +101,32 @@ class QuantumLongShortTermMemory(nn.Module):
             "noise_model": self.noise_model,
             "hidden_size": self.hidden_sz
         }
+    
+class QModel(nn.Module):
+
+    def __init__(self, 
+                feature_map,
+                ansatz,
+                ansatz_reps,
+                backend,
+                input_size,
+                hidden_dim,
+                target_size,
+                noise_model
+                ):
+         super(QModel, self).__init__()
+
+        
+    QLSTM = QuantumLongShortTermMemory()    
+    self.lstm = QLSTM(feature_map, ansatz, ansatz_reps, backend, noise_model, input_size, hidden_size = hidden_dim)
+
+    # The linear layer that maps from hidden state space to target space
+    self.dense = nn.Linear(hidden_dim, target_size)
+
+    def forward(self, x):
+        lstm_out, _ = self.lstm(x)
+        dense_out = self.dense(lstm_out)
+        out_scores=dense_out
+        # out_scores = F.log_softmax(dense_out, dim=1)
+        
+        return out_scores

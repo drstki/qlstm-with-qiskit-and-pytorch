@@ -1,21 +1,20 @@
 import pandas as pd
-
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib.collections import PatchCollection
 from matplotlib.patches import Rectangle
 
-from sklearn.preprocessing import MinMaxScaler
-
 class DATAPREP: # load and prepare data set for using quantum backend
 
-    def prep_stripes(dataset):
+    print('________________________________________________________________________')
+    print()
+    print("Load and Preprocessing DATA:")
+    print()
 
+    def prep_stripes(dataset,sep, header, x_axis, y_axis, idco, FIRST, LAST, FIRST_REFERENCE, LAST_REFERENCE, figsize, LIM, LAST_TRAIN, LAST_VALID, LAST_TEST, periods, dataset_curve_file):
+        
         FIRST = 1850
         LAST = 2018  # inclusive
-        LAST_TRAIN =2005
-        LAST_VALID =2018
-        LAST_TEST = 2023
 
         # Reference period for the center of the color scale
 
@@ -23,20 +22,7 @@ class DATAPREP: # load and prepare data set for using quantum backend
         LAST_REFERENCE = 2000
         LIM = 0.7 # degrees
 
-        sep=';'
-        header = 0
-        names =['year', 'anomaly']
-        idcol = [0]
-
-        print('________________________________________________________________________')
-        print()
-        print("Load and Preprocessing DATA:")
-        print()
-        
-        data_file = pd.read_csv(dataset, sep=sep, header=header, names=names, index_col=idcol)
-        y_axis = 'anomaly'
-        x_axis = 'year'
-        periods=[2,5]
+        data_file = pd.read_csv(dataset, sep=sep, header=header, names=[x_axis, y_axis], index_col=[idco])
         
         anomaly = data_file.loc[FIRST:LAST, y_axis].dropna()
         
@@ -68,7 +54,8 @@ class DATAPREP: # load and prepare data set for using quantum backend
         ax.set_ylim(0, 1)
         ax.set_xlim(FIRST, LAST + 1)
     
-        fig = plt.savefig('./results/data_warming_stripes.png')
+        fig.set_title('Warming Stripes 1850-2018')
+        fig = plt.savefig('./results/qlstm_warming_stripes_data.png')
 
         train_df = data_file.loc[FIRST:LAST_TRAIN, y_axis].dropna().reset_index().set_index(x_axis)
         valid_df = data_file.loc[LAST_TRAIN+1:LAST_VALID, y_axis].dropna().reset_index().set_index(x_axis)
@@ -90,9 +77,9 @@ class DATAPREP: # load and prepare data set for using quantum backend
         valid_df=train_scaler_amount.transform(valid_df[['anomaly','%s_%d' % (y_axis, periods[0]),'%s_%d' % (y_axis, periods[1])]])[5:,:]
         test_df=train_scaler_amount.transform(test_df[['anomaly','%s_%d' % (y_axis, periods[0]),'%s_%d' % (y_axis, periods[1])]])[5:,:]
     
-        plt.figure(figsize=(15,5))
+        plt.figure(figsize=figsize)
         plt.plot(train_df[:,0], color='blue', label='Train data')
-        fig = plt.savefig('./results/prep_climate_dataset_curve.png')
+        fig = plt.savefig(dataset_curve_file)
 
         return train_df, valid_df, test_df
     
