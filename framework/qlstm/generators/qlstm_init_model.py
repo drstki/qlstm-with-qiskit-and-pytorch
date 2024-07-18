@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import numpy as np
 
 #import module_utils
 import generators.ansatz as astz
@@ -15,38 +16,51 @@ from qiskit_machine_learning.connectors import TorchConnector
 
 
 class QuantumLongShortTermMemory(nn.Module):
-    def __init__(self, vqc, num_qubits, feature_map, ansatz, input_size: int=4, hidden_size: int=1, seed: int=1):
+    
+    def __init__(self, feature_map="fm_1", ansatz="ghz", ansatz_reps=2, backend="aer_sv", noise_model=False, input_size=4, hidden_size: int=1):
         super().__init__()
-
-        self.input_sz = input_size
+        
         self.hidden_sz = hidden_size
-        self.seed = seed
+        self.input_sz = input_size
+
+        # load predefined quantum hyperparameters
+        self.backend =be.get_backend(backend)
+        self.noise_model = nm.get_noise_model(noise_model)
+        self.feature_map = fm.get_feature_map(feature_map, input_size)
+        self.ansatz = astz.get_ansatz(ansatz, input_size)
+        self.ansatz_reps = ansatz_reps
+
+        # check feature map and ansatz compatibility
+        if self.feature_map.num_qubits != self.ansatz.num_qubits:
+            raise ValueError(f"Mismatch in number of qubits: feature_map has {self.feature_map.num_qubits}, ansatz has {self.ansatz.num_qubits}.")
 
         # construct quantum layer
-        self.VQC = nn.ModuleDict() # WICHTIG to connect 
-        self.construct_VQC_layer(vqc, num_qubits, feature_map, ansatz)
+        self.VQC = nn.ModuleDict()
+        self.construct_VQC_layer(ansatz_reps)
 
         # classical layer
         self.input_layer = nn.Linear(self.input_sz + self.hidden_sz, self.input_sz)
         self.input_layer_2 = nn.Linear(1, self.input_sz)
 
 
-    def construct_VQC_layer(self, vqc, num_qubits, feature_map, ansatz):
-        # construct the 4 QNN layer
+    def construct_VQC_layer(self, ansatz_reps):        
+        # construct the VQC
+        self.vqc = self.feature_map.compose(self.ansatz, inplace=False)
+        # TODO: add ansatz repetitions
+
+        # construct the QNN layer
         for layer_name in ["1", "2", "3", "4", "5"]:
             # initialize the QNN layer
-            obsv = SparsePauliOp(["Z"*num_qubits]) 
-            estimator = Estimator(backend=backend, options={'NoiseModel': noise_model})
+            obsv = SparsePauliOp(["Z"*self.feature_map.num_qubits]) 
+            estimator = Estimator(backend=self.backend, options={'NoiseModel': self.noise_model})
             qnn = EstimatorQNN(
-                    circuit=vqc,
+                    circuit=self.vqc,
                     estimator=estimator,
                     observables=obsv,
-                    input_params=feature_map.parameters,
-                    weight_params=ansatz.parameters,
+                    input_params=self.feature_map.parameters,
+                    weight_params=self.ansatz.parameters,
                     input_gradients=True
             )
-
-            # WICHTIG connector
             self.VQC[layer_name] = TorchConnector(qnn)
 
 
@@ -76,3 +90,41 @@ class QuantumLongShortTermMemory(nn.Module):
         outputs = outputs.transpose(0, 1).contiguous()
 
         return outputs, (h_t, c_t)
+    
+    def get_model_info(self):
+        return {
+            "feature_map": self.feature_map,
+            "ansatz": self.ansatz,
+            "vqc": self.vqc,
+            "backend": self.backend,
+            "noise_model": self.noise_model,
+            "hidden_size": self.hidden_sz
+        }    
+class QModel(nn.Module):
+
+    def __init__(self, 
+                input_size,
+                hidden_dim,
+                target_size,
+                noise_model
+                 ):
+        super(QModel, self).__init__()
+
+        seed = 71
+        np.random.seed = seed
+        torch.manual_seed=seed
+
+
+        QLSTM = QuantumLongShortTermMemory()
+        
+        self.lstm = QLSTM(feature_map="fm_1", ansatz="ghz", ansatz_reps=2, backend="aer_sv", noise_model=noise_model, input_size=input_size, hidden_size = hidden_dim)
+
+        # The linear layer that maps from hidden state space to target space
+        self.dense = nn.Linear(hidden_dim, target_size)
+
+    def forward(self, x):
+        lstm_out, _ = self.lstm(x)
+        dense_out = self.dense(lstm_out)
+        out_scores=dense_out
+        # out_scores = F.log_softmax(dense_out, dim=1)
+        return out_scores
